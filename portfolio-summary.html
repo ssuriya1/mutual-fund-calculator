@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Summary - Mutual Fund Portfolio Builder</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="app-wrapper">
+        <nav class="app-header">
+            <h1>Portfolio Summary</h1>
+            <div class="tabs">
+                <button class="tab-btn" onclick="window.location.href='index.html'">Investment Details</button>
+                <button class="tab-btn" onclick="window.location.href='fund-selection.html'">Fund Selection</button>
+                <button class="tab-btn active">Portfolio Summary</button>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="portfolio-overview">
+                <div class="chart-container">
+                    <canvas id="portfolioChart"></canvas>
+                </div>
+            </div>
+            <div class="portfolio-details">
+                <div class="small-cap-summary" id="small-cap-summary"></div>
+                <div class="mid-cap-summary" id="mid-cap-summary"></div>
+                <div class="large-cap-summary" id="large-cap-summary"></div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

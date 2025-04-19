@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mutual Fund Portfolio Builder</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-wrapper">
+        <nav class="app-header">
+            <h1>Mutual Fund Portfolio Builder</h1>
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="investment">Investment Details</button>
+                <button class="tab-btn" data-tab="fund-selection">Fund Selection</button>
+                <button class="tab-btn" data-tab="portfolio-summary">Portfolio Summary</button>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="tab-content active" id="investment-tab">
+                <form id="investment-form" class="investment-form">
+                    <div class="input-group">
+                        <label for="total-investment">Total Investment Amount (₹):</label>
+                        <input type="number" id="total-investment" required min="1000" 
+                               oninput="this.value = this.value.replace(/,/g, '')"
+                               onfocus="this.type='number'"
+                               onblur="this.type='text'; this.value = this.getAttribute('data-formatted') || this.value">
+                    </div>
+                    
+                    <div class="allocation-grid">
+                        <div class="input-group">
+                            <label for="small-cap">Small Cap Allocation (%):</label>
+                            <input type="number" id="small-cap" required min="0" max="100">
+                            <span class="allocation-amount" id="small-cap-amount"></span>
+                        </div>
+                        <div class="input-group">
+                            <label for="mid-cap">Mid Cap Allocation (%):</label>
+                            <input type="number" id="mid-cap" required min="0" max="100">
+                            <span class="allocation-amount" id="mid-cap-amount"></span>
+                        </div>
+                        <div class="input-group">
+                            <label for="large-cap">Large Cap Allocation (%):</label>
+                            <input type="number" id="large-cap" required min="0" max="100">
+                            <span class="allocation-amount" id="large-cap-amount"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="allocation-summary" id="allocation-summary">
+                        Total Allocation: <span id="total-allocation">0</span>% 
+                        <span id="allocation-warning" class="warning-text"></span>
+                    </div>
+                    
+                    <button type="submit" class="btn-save">Save</button>
+                </form>
+            </div>
+
+            <div class="tab-content" id="fund-selection-tab">
+                <div id="fund-selection-content"></div>
+            </div>
+
+            <div class="tab-content" id="portfolio-tab">
+                <div id="portfolio-summary"></div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

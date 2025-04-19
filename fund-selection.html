@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fund Selection - Mutual Fund Portfolio Builder</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-wrapper">
+        <nav class="app-header">
+            <h1>Fund Selection</h1>
+            <div class="tabs">
+                <button class="tab-btn" onclick="window.location.href='index.html'">Investment Details</button>
+                <button class="tab-btn active">Fund Selection</button>
+                <button class="tab-btn" onclick="window.location.href='portfolio-summary.html'">Portfolio Summary</button>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="fund-tabs">
+                <button class="fund-tab-btn active" data-cap="small">Small Cap</button>
+                <button class="fund-tab-btn" data-cap="mid">Mid Cap</button>
+                <button class="fund-tab-btn" data-cap="large">Large Cap</button>
+            </div>
+
+            <div class="fund-content active" id="small-cap-content">
+                <div class="cap-allocation-info"></div>
+                <div class="fund-table-container">
+                    <table class="fund-table">
+                        <thead>
+                            <tr>
+                                <th>Fund Name</th>
+                                <th>PE</th>
+                                <th>PB</th>
+                                <th>Beta</th>
+                                <th>Alpha</th>
+                                <th>Sharpe</th>
+                                <th>Sortino</th>
+                                <th>Expense%</th>
+                                <th>Rank</th>
+                                <th>Weightage%</th>
+                                <th>Investment</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="small-cap-tbody">
+                            <tr class="fund-row" data-cap-type="small">
+                                <td><input type="text" name="fund-name" required></td>
+                                <td><input type="number" name="pe" step="0.01" required></td>
+                                <td><input type="number" name="pb" step="0.01" required></td>
+                                <td><input type="number" name="beta" step="0.01" required></td>
+                                <td><input type="number" name="alpha" step="0.01" required></td>
+                                <td><input type="number" name="sharpe" step="0.01" required></td>
+                                <td><input type="number" name="sortino" step="0.01" required></td>
+                                <td><input type="number" name="expense" step="0.01" required></td>
+                                <td><input type="number" name="rank" required></td>
+                                <td><input type="number" name="weightage" step="0.01" required onchange="updateInvestment(this)"></td>
+                                <td><input type="number" name="investment" readonly></td>
+                                <td>
+                                    <button class="btn-delete-row" onclick="deleteRow(this)">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="fund-actions">
+                    <button type="button" class="add-fund-btn" onclick="addNewTableRow('small-cap-tbody')">Add Fund</button>
+                    <button type="button" class="save-funds-btn" onclick="saveCapFunds('small')">Save</button>
+                </div>
+            </div>
+
+            <div class="fund-content" id="mid-cap-content">
+                <div class="cap-allocation-info"></div>
+                <div class="fund-table-container">
+                    <table class="fund-table">
+                        <thead>
+                            <tr>
+                                <th>Fund Name</th>
+                                <th>PE</th>
+                                <th>PB</th>
+                                <th>Beta</th>
+                                <th>Alpha</th>
+                                <th>Sharpe</th>
+                                <th>Sortino</th>
+                                <th>Expense%</th>
+                                <th>Rank</th>
+                                <th>Weightage%</th>
+                                <th>Investment</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="mid-cap-tbody"></tbody>
+                    </table>
+                </div>
+                <div class="fund-actions">
+                    <button type="button" class="add-fund-btn" onclick="addNewTableRow('mid-cap-tbody')">Add Fund</button>
+                    <button type="button" class="save-funds-btn" onclick="saveCapFunds('mid')">Save</button>
+                </div>
+            </div>
+
+            <div class="fund-content" id="large-cap-content">
+                <div class="cap-allocation-info"></div>
+                <div class="fund-table-container">
+                    <table class="fund-table">
+                        <thead>
+                            <tr>
+                                <th>Fund Name</th>
+                                <th>PE</th>
+                                <th>PB</th>
+                                <th>Beta</th>
+                                <th>Alpha</th>
+                                <th>Sharpe</th>
+                                <th>Sortino</th>
+                                <th>Expense%</th>
+                                <th>Rank</th>
+                                <th>Weightage%</th>
+                                <th>Investment</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="large-cap-tbody"></tbody>
+                    </table>
+                </div>
+                <div class="fund-actions">
+                    <button type="button" class="add-fund-btn" onclick="addNewTableRow('large-cap-tbody')">Add Fund</button>
+                    <button type="button" class="save-funds-btn" onclick="saveCapFunds('large')">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
